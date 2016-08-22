@@ -9,7 +9,7 @@ In order to properly assess where you are at as a developer, we ask that you go 
 - Demonstrate two-way binding
 - Demonstrate directives or component knowledge
 - Utilize services to manage data between states
-- Uses pipes or filters to maniulate displayed data
+- Uses pipes or filters to manipulate displayed data
 - Be creative! Please... not another ToDo app
 
 **Bonus Points**
