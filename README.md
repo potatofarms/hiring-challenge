@@ -5,9 +5,10 @@ So you want to be a Maestronaut? We’re very proud of the team we have built an
 In order to properly assess where you are at as a developer, we’re challenging you to demonstrate your Angular knowledge, coding style, and creative ability. There aren’t many restrictions for this assessment; we want you to be creative and come up with an idea that helps showcase your skills.
 
 ### What are we looking for
-- Must be an Angular 1 or Angular 2 application
+- Must be an Angular 2 application
+- Use TypeScript
 - Demonstrate two-way binding
-- Demonstrate directives or component knowledge
+- Demonstrate component knowledge
 - Utilize services to manage data between states
 - Uses pipes or filters to manipulate displayed data
 - Be creative! Please... not another ToDo app, show us what you’ve got!
@@ -15,7 +16,6 @@ In order to properly assess where you are at as a developer, we’re challenging
 **Bonus Points**
 - Use Material Design
 - Integrate 3rd party backend (i.e. Firebase, JSONPlaceholder)
-- Use TypeScript
 
 ### How to deliver
 - Fork this repo
