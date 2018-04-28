@@ -1,3 +1,3 @@
-<p>
-  Test: {{ media }}
-</p>
+<div *ngFor='let m of media'>
+  <app-media-item [media]="m"></app-media-item>
+</div>

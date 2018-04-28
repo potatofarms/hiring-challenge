@@ -8,7 +8,7 @@ import { Media } from '../media';
   styleUrls: ['./media.component.css']
 })
 export class MediaComponent implements OnInit {
-  media: string;
+  media: Media[];
 
   constructor(private mediaService: MediaService) { }
 
@@ -17,6 +17,7 @@ export class MediaComponent implements OnInit {
   }
 
   getMedia(): void {
-  
+    this.mediaService.getMedia()
+      .subscribe(media => this.media = media);
   }
 }
