@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'media', pathMatch: 'full' },
   { path: 'media', component: MediaComponent },
   { path: 'details/:id', component: MediaDetailsComponent }
-
 ]
 
 @NgModule({

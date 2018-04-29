@@ -1,3 +1,9 @@
-<p>
-  media-details works!
-</p>
+<div *ngIf="mediaItem">
+  <h2>{{ mediaItem.title }}</h2>
+  <a href="{{ mediaItem.url }}">
+    <img src="{{ mediaItem.thumb }}">
+  </a>
+  <p>
+    <strong>Description</strong>&mdash;{{ mediaItem.description }}
+  </p>
+</div>
