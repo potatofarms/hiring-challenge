@@ -9,13 +9,15 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MediaComponent } from './media/media.component';
 import { MediaService } from './media.service';
 import { MediaItemComponent } from './media-item/media-item.component';
+import { MediaDetailsComponent } from './media-details/media-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MediaComponent,
-    MediaItemComponent
+    MediaItemComponent,
+    MediaDetailsComponent
   ],
   imports: [
     BrowserModule,
