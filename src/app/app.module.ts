@@ -12,6 +12,7 @@ import { MediaService } from './media.service';
 import { MediaItemComponent } from './media-item/media-item.component';
 import { MediaDetailsComponent } from './media-details/media-details.component';
 import { AddMediaComponent } from './add-media/add-media.component';
+import { AddMediaFormComponent } from './add-media-form/add-media-form.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddMediaComponent } from './add-media/add-media.component';
     MediaComponent,
     MediaItemComponent,
     MediaDetailsComponent,
-    AddMediaComponent
+    AddMediaComponent,
+    AddMediaFormComponent
   ],
   imports: [
     BrowserModule,

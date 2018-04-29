@@ -25,6 +25,10 @@ export class AddMediaComponent implements OnInit {
   }
 
   validate(title: string, description: string, url: string, thumb:string): boolean {
-    return true;
+    // TODO: Actually validate things. Make sure not null on required fields.
+    if (!title || !url || !thumb) { return false; }
+    if (!description) {
+      description = "";
+    }
   }
 }

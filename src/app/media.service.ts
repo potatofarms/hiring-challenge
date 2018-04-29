@@ -43,6 +43,15 @@ export class MediaService {
       )
   }
 
+  // POST Media
+  addMediaItem(media: Media): Observable<Media> {
+    return this.http.post<Media>(this.mediaUrl, media, httpOptions)
+      .pipe(
+        tap((media: Media) => this.log(`added media with ID ${media.id}.`)),
+        catchError(this.handleError<Media>('addMediaItem'))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // Log error to the web browser's console.
