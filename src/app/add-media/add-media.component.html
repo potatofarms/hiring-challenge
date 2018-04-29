@@ -1,0 +1,26 @@
+<h2>Add Media</h2>
+<form>
+  <label>
+    Title:
+    <input #mediaTitle />
+  </label>
+
+  <label>
+    Description (Optional):
+    <input #mediaDescription />
+  </label>
+
+  <label>
+    URL:
+    <input #mediaUrl />
+  </label>
+
+  <label>
+    Thumbnail URL:
+    <input #thumbUrl />
+  </label>
+
+  <button (click)="add(mediaTitle.value, mediaDescription.value, mediaUrl.value, thumbUrl.value);">
+    Add
+  </button>
+</form>
