@@ -9,6 +9,14 @@ import { Media } from '../media';
 export class AddMediaComponent implements OnInit {
   constructor() { }
 
+  m: Media = {
+    id: null,
+    title: '',
+    description: '',
+    url: '',
+    thumb: ''
+  };
+
   ngOnInit() {
   }
 }

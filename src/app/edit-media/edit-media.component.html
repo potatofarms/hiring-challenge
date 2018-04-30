@@ -1,0 +1,4 @@
+<h2 *ngIf="media">
+  Edit "{{media.title}}"
+</h2>
+<app-add-media-form *ngIf="media" [model]="media" [formtype]="'edit'"></app-add-media-form>

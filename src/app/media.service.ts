@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Media } from './media';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/take'
 
 @Injectable()
@@ -10,7 +11,8 @@ export class MediaService {
   private listPath = '/media';
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private location: Location
   ) { }
 
   // Currently just a wrapper for console.log.
@@ -40,5 +42,12 @@ export class MediaService {
   // POST Media
   addMediaItem(media: Media): void {
     this.db.list(this.listPath).push(media);
+  }
+
+  // PUT Media
+  updateMediaItem(media: Media): void {
+    this.db.list(this.listPath, ref => ref.orderByChild('id').equalTo(media.id)).snapshotChanges().first().subscribe(action => {
+      this.db.object(`${this.listPath}/${action[0].key}`).update(media).then(_ => this.location.back());
+    });
   }
 }
