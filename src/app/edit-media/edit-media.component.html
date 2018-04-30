@@ -1,4 +1,17 @@
-<h2 *ngIf="media">
-  Edit "{{media.title}}"
-</h2>
-<app-add-media-form *ngIf="media" [model]="media" [formtype]="'edit'"></app-add-media-form>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <span *ngIf="media">
+            Edit "{{media.title}}"
+          </span>
+        </div>
+
+        <div class="card-body">
+          <app-add-media-form *ngIf="media" [model]="media" [formtype]="'edit'"></app-add-media-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

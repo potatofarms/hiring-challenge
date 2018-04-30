@@ -1,5 +1,6 @@
-<h2>{{ media.title }}</h2>
-<a routerLink="/details/{{ media.id }}">
-  <img src="{{ media.thumb }}">
-</a>
-<p>Description: {{ media.description }}</p>
+<div class="col" style="margin: 10px;">
+  <h2>{{ media.title }}</h2>
+  <a routerLink="/details/{{ media.id }}">
+    <img src="{{ media.thumb }}" style="width: 160px; height: 160px;">
+  </a>
+</div>
