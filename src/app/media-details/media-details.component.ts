@@ -21,6 +21,7 @@ export class MediaDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Get the ID of the current media item from the route.
     const id = +this.route.snapshot.paramMap.get('id');
     this.mediaObservable = this.mediaService.getMediaItem(id);
   }

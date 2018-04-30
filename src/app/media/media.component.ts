@@ -14,6 +14,8 @@ export class MediaComponent implements OnInit {
   constructor(private mediaService: MediaService) { }
 
   ngOnInit() {
+    // Get a firebase asynchronous observable with all of the media items in it.
+    // Can be iterated over in the view.
     this.mediaObservable = this.mediaService.getMedia();
   }
 

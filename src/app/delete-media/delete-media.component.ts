@@ -17,7 +17,11 @@ export class DeleteMediaComponent implements OnInit {
     private location: Location
   ) { }
 
+  // TODO: Confirm deletion with the user before actually deleting.
+
+  // Delete using GET. This should be updated to be a form POST deletion probably.
   ngOnInit() {
+    // Get the ID of the media item from the activated route.
     const id = +this.route.snapshot.paramMap.get('id');
     this.mediaService.deleteMediaItem(id);
   }

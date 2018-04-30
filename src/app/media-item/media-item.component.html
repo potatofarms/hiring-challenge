@@ -1,5 +1,5 @@
 <div class="col" style="margin: 10px;">
-  <h2>{{ media.title }}</h2>
+  <h3>{{ (media.title.length > 13) ? (media.title | slice:0:13)+'...':(media.title) }}</h3>
   <a routerLink="/details/{{ media.id }}">
     <img src="{{ media.thumb }}" style="width: 160px; height: 160px;">
   </a>

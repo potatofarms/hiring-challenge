@@ -21,8 +21,11 @@ export class EditMediaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Get the ID of the media item from the activated route.
     const id = +this.route.snapshot.paramMap.get('id');
+    // Get a copy of the object from the firebase DB.
     this.mediaObservable = this.mediaService.getMediaItem(id);
+    // Extract the media object from the firebase observable.
     this.mediaObservable.first().subscribe(data => this.media = <Media>data[0]);
   }
 
