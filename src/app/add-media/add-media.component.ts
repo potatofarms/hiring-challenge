@@ -9,6 +9,7 @@ import { Media } from '../media';
 export class AddMediaComponent implements OnInit {
   constructor() { }
 
+  // Blank media object to bind to the form and eventually submit to the media service.
   m: Media = {
     id: null,
     title: '',
