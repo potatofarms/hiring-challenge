@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from '../media.service';
-import { Media } from '../media';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
+
 export class MediaComponent implements OnInit {
-  media: Media[];
+  mediaObservable: Observable<any[]>;
 
   constructor(private mediaService: MediaService) { }
 
   ngOnInit() {
-    this.getMedia();
+    this.mediaObservable = this.mediaService.getMedia();
   }
 
-  getMedia(): void {
-    this.mediaService.getMedia()
-      .subscribe(media => this.media = media);
-  }
 }

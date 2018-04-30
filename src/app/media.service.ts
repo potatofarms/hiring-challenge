@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Media } from './media';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { AngularFireDatabase } from 'angularfire2/database';
+import 'rxjs/add/operator/take'
 
 @Injectable()
 export class MediaService {
   private mediaUrl = 'api/media';
+  private listPath = '/media';
 
   constructor(
-    private http: HttpClient
+    private db: AngularFireDatabase
   ) { }
 
   // Currently just a wrapper for console.log.
@@ -23,40 +19,26 @@ export class MediaService {
     console.log(message);
   }
 
+  getLastId(): Observable<number> {
+    let media: Observable<Media[]> = this.db.list<Media>(this.listPath, ref => ref.orderByChild('id').limitToLast(1)).valueChanges();
+    return media.map(items => {
+      console.log(items);
+      return items[0].id
+    });
+  }
+
   // GET Media
-  getMedia(): Observable<Media[]> {
-    return this.http.get<Media[]>(this.mediaUrl)
-      .pipe(
-        tap(heroes => this.log(`Got Media!`)),
-        catchError(this.handleError('getMedia', []))
-      );
+  getMedia(): Observable<any[]> {
+    return this.db.list(this.listPath).valueChanges();
   }
 
   // GET Media with specific ID.
-  getMediaItem(id: number): Observable<Media> {
-    // URL To make the GET 
-    const url = `${this.mediaUrl}/${id}`;
-    return this.http.get<Media>(url)
-      .pipe(
-        tap(_ => this.log(`Got Media with ID: ${id}`)),
-        catchError(this.handleError<Media>(`getMedia id: ${id}`))
-      )
+  getMediaItem(id: number): Observable<any[]> {
+    return this.db.list(this.listPath, ref => ref.orderByChild('id').equalTo(id)).valueChanges();
   }
 
   // POST Media
-  addMediaItem(media: Media): Observable<Media> {
-    return this.http.post<Media>(this.mediaUrl, media, httpOptions)
-      .pipe(
-        tap((media: Media) => this.log(`added media with ID ${media.id}.`)),
-        catchError(this.handleError<Media>('addMediaItem'))
-      );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // Log error to the web browser's console.
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T); // display a message, but keep the app running.
-    }
+  addMediaItem(media: Media): void {
+    this.db.list(this.listPath).push(media);
   }
 }

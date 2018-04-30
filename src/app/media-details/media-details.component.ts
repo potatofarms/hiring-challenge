@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MediaService } from '../media.service';
 import { Media } from '../media';
+import { MediaService } from '../media.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-media-details',
   templateUrl: './media-details.component.html',
   styleUrls: ['./media-details.component.css']
 })
+
 export class MediaDetailsComponent implements OnInit {
-  mediaItem: Media;
+  mediaObservable: Observable<any[]>;
 
   constructor(
     private mediaService: MediaService,
@@ -19,13 +21,7 @@ export class MediaDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMediaItem();
-  }
-
-  getMediaItem(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.mediaService.getMediaItem(id)
-      .subscribe(mediaItem => this.mediaItem = mediaItem);
+    this.mediaObservable = this.mediaService.getMediaItem(id);
   }
-
 }

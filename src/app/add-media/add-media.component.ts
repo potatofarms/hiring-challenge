@@ -11,24 +11,4 @@ export class AddMediaComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  add(title: string, description: string, url: string, thumb: string): void {
-    // Get rid of trailing and leading spaces in the input.
-    title = title.trim();
-    description = description.trim();
-    url = url.trim();
-    thumb = thumb.trim();
-    // Validate the input.
-    if (!this.validate(title, description, url, thumb)) {
-      return;
-    }
-  }
-
-  validate(title: string, description: string, url: string, thumb:string): boolean {
-    // TODO: Actually validate things. Make sure not null on required fields.
-    if (!title || !url || !thumb) { return false; }
-    if (!description) {
-      description = "";
-    }
-  }
 }

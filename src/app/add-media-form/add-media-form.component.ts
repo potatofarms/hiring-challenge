@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Media } from '../media';
 import { MediaService } from '../media.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'app-add-media-form',
@@ -22,9 +24,11 @@ export class AddMediaFormComponent implements OnInit {
   submitted = false;
 
   onSubmit() {
-    this.mediaService.addMediaItem(this.model)
-      .subscribe(media => this.model = media);
-    this.submitted = true;
+    this.mediaService.getLastId().first().subscribe(id => {
+      this.model.id = id + 1;
+      this.mediaService.addMediaItem(this.model);
+      this.submitted = true;
+    });
   }
 
   newMedia() {

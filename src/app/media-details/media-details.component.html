@@ -1,4 +1,4 @@
-<div *ngIf="mediaItem">
+<div *ngFor="let mediaItem of mediaObservable | async">
   <h2>{{ mediaItem.title }}</h2>
   <a href="{{ mediaItem.url }}">
     <img src="{{ mediaItem.thumb }}">
