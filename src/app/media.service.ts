@@ -46,8 +46,21 @@ export class MediaService {
 
   // PUT Media
   updateMediaItem(media: Media): void {
-    this.db.list(this.listPath, ref => ref.orderByChild('id').equalTo(media.id)).snapshotChanges().first().subscribe(action => {
-      this.db.object(`${this.listPath}/${action[0].key}`).update(media).then(_ => this.location.back());
-    });
+    this.db.list(this.listPath, ref => ref.orderByChild('id').equalTo(media.id))
+      .snapshotChanges()
+      .first()
+      .subscribe(action => {
+        this.db.object(`${this.listPath}/${action[0].key}`).update(media).then(_ => this.location.back());
+      });
+  }
+
+  // DELETE Media
+  deleteMediaItem(id: number): void {
+    this.db.list(this.listPath, ref => ref.orderByChild('id').equalTo(id))
+      .snapshotChanges()
+      .first()
+      .subscribe(action => {
+        this.db.object(`${this.listPath}/${action[0].key}`).remove().then(_ => this.location.go('/media'));
+      });
   }
 }

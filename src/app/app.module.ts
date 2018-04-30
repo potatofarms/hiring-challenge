@@ -15,6 +15,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environments/environment';
 import { EditMediaComponent } from './edit-media/edit-media.component';
+import { DeleteMediaComponent } from './delete-media/delete-media.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { EditMediaComponent } from './edit-media/edit-media.component';
     MediaDetailsComponent,
     AddMediaComponent,
     AddMediaFormComponent,
-    EditMediaComponent
+    EditMediaComponent,
+    DeleteMediaComponent
   ],
   imports: [
     BrowserModule,
